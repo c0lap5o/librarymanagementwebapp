@@ -8,14 +8,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "books")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+public class Book extends AbstractModel {
 
     private String title;
     private String author;
@@ -40,10 +33,6 @@ public class Book {
         this.author = author;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
     public long getISBN() {
         return ISBN;
     }
@@ -66,5 +55,16 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", ISBN=" + ISBN +
+                ", publishedDate=" + publishedDate +
+                ", price=" + price +
+                '}';
     }
 }
