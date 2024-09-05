@@ -51,4 +51,9 @@ public class BookServiceImpl implements BookService {
     public Book saveOrUpdate(Book book) {
         return bookDao.saveOrUpdate(book);
     }
+    @Transactional
+    @Override
+    public void delete(Integer id) {
+        bookDao.delete(id);
+    }
 }

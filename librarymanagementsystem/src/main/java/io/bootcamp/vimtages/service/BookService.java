@@ -17,4 +17,6 @@ public interface BookService {
     List<Book> getByIsbn(Long isbn);
 
     Book saveOrUpdate(Book book);
+
+    void delete(Integer id);
 }

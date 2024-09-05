@@ -9,10 +9,13 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/TestMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/rest/RestBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/rest/RestBookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/GenericJpaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/GenericJpaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/JpaBookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/JpaBookDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/librarymanager.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/librarymanager.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/persistence/persistence-dev.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/persistence/persistence-dev.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/js/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/js/test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

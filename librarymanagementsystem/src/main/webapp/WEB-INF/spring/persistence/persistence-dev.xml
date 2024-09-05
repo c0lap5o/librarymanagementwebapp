@@ -33,7 +33,7 @@
                 <entry key="hibernate.hbm2ddl.import_files" value="META-INF/book-list.sql"/>
                 <entry key="hibernate.hbm2ddl.import_files_sql_extractor"
                        value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor"/>
-                <entry key="hibernate.hbm2ddl.auto" value="create-drop"/>
+                <entry key="hibernate.hbm2ddl.auto" value="create"/>
 
             </map>
         </property>

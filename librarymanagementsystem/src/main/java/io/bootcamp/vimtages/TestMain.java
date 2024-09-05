@@ -31,6 +31,7 @@ public class TestMain {
         book1.setPublishedDate(new Date());
         book1.setISBN(1321654865);
         book1.setPrice(19.0);
+        book1.setId(1);
         System.out.println("here");
         System.out.println(book1);
 
@@ -42,7 +43,15 @@ public class TestMain {
         System.out.println("here");
         System.out.println(createdBook);
 
+        jpaBookDao.delete(1);
 
+        /*
+        Book book2 = new Book();
+        bookService.saveOrUpdate(book2);
+
+        books = bookService.getAll();
+        System.out.println("contains" + books.contains(book2));
+*/
         //books = jpaBookDao.findAll();
         //books.forEach(System.out::println);
         //System.out.println("Testing getting book by name");

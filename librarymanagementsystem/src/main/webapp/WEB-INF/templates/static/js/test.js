@@ -1,11 +1,13 @@
 $(document).ready(function() {
 console.log("document loaded");
-    $("#test").innerHTML = "i changed this with js";
+    $("#test")[0].innerHTML = "i changed this with js";
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    //document.getElementById('#test').innerHTML="<h1>changed this</h1>";
-    console.log("doc loaded from eventlistener");
+    const tableBody = document.querySelector('#tableBody');
+    const row = document.createElement('td');
+    row.innerHTML=`<tr>batata</tr>`;
+
 });
 
 

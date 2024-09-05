@@ -1,11 +1,14 @@
 package io.bootcamp.vimtages.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Book Entity Class
  */
+
 @Entity
 @Table(name = "books")
 public class Book extends AbstractModel {

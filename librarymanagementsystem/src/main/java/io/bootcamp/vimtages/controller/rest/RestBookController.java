@@ -1,5 +1,6 @@
 package io.bootcamp.vimtages.controller.rest;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.bootcamp.vimtages.model.Book;
 import io.bootcamp.vimtages.persistence.BookDao;
 import io.bootcamp.vimtages.service.BookService;
@@ -45,7 +46,25 @@ public class RestBookController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE,path = "/{id}")
+    public void deleteBook(@PathVariable Integer id){
+        if (bookService.get(id) == null){
+            System.out.println("book does not exist");
+        }
 
+        bookService.delete(id);
+
+    }
+
+    @RequestMapping(method = RequestMethod.PUT,path = "/{id}")
+    public ResponseEntity<Book> updateBook(@RequestBody Book book, @PathVariable Integer id ){
+        if (bookService.get(id) == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        book.setId(id);
+        bookService.saveOrUpdate(book);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
     @RequestMapping(method = RequestMethod.GET,path = {"/name/{title}"})
     public ResponseEntity<List<Book>> getBookByName(@PathVariable String title){
         List<Book> books = bookService.getByName(title);
