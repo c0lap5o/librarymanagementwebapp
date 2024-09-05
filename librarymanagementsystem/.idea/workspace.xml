@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8fb1dbb-3843-4d7e-beb8-5203cf31f41b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/TestMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/rest/RestBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/rest/RestBookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/model/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/GenericJpaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/GenericJpaDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/JpaBookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/persistence/jpa/JpaBookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/book-list.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/book-list.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/service/BookServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

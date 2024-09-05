@@ -20,16 +20,4 @@ public class JpaBookDao extends GenericJpaDao<Book> implements BookDao {
      */
     public JpaBookDao(){super(Book.class);}
 
-    public List<Book> getBookByName(String title){
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
-        Root<Book> root = criteriaQuery.from(Book.class);
-
-        // Specify the condition
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("title"), title));
-
-       return  em.createQuery(criteriaQuery).getResultList();
-
-
-    }
 }

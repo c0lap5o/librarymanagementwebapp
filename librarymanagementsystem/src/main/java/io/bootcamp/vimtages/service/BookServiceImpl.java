@@ -4,7 +4,9 @@ import io.bootcamp.vimtages.model.Book;
 import io.bootcamp.vimtages.persistence.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
@@ -43,5 +45,10 @@ public class BookServiceImpl implements BookService {
     public List<Book> getByIsbn(Long isbn) {
         List<Book> books = bookDao.findAll();
         return books.stream().filter(book -> (book.getISBN() == isbn)).collect(Collectors.toList());
+    }
+    @Transactional
+    @Override
+    public Book saveOrUpdate(Book book) {
+        return bookDao.saveOrUpdate(book);
     }
 }

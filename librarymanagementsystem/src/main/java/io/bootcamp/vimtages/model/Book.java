@@ -59,12 +59,13 @@ public class Book extends AbstractModel {
 
     @Override
     public String toString() {
-        return "Book{" +
-                ", title='" + title + '\'' +
+        return "Book{" + "id=" +getId() +
+        ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", ISBN=" + ISBN +
                 ", publishedDate=" + publishedDate +
                 ", price=" + price +
+
                 '}';
     }
 }

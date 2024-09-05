@@ -2,11 +2,12 @@ package io.bootcamp.vimtages;
 
 import io.bootcamp.vimtages.model.Book;
 import io.bootcamp.vimtages.persistence.jpa.JpaBookDao;
+import io.bootcamp.vimtages.service.BookServiceImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Date;
 import java.util.List;
 
 public class TestMain {
@@ -24,9 +25,31 @@ public class TestMain {
         List<Book> books = jpaBookDao.findAll();
         books.forEach(System.out::println);
 
-        System.out.println("Testing getting book by name");
+        Book book1 = new Book();
+        book1.setTitle("new book");
+        book1.setAuthor("me");
+        book1.setPublishedDate(new Date());
+        book1.setISBN(1321654865);
+        book1.setPrice(19.0);
+        System.out.println("here");
+        System.out.println(book1);
 
-        System.out.println(jpaBookDao.getBookByName("The Girl with the Dragon Tattoo"));
+        BookServiceImpl bookService = new BookServiceImpl();
+        bookService.setBookDao(jpaBookDao);
+
+        Book createdBook = bookService.saveOrUpdate(book);
+
+        System.out.println("here");
+        System.out.println(createdBook);
+
+
+        //books = jpaBookDao.findAll();
+        //books.forEach(System.out::println);
+        //System.out.println("Testing getting book by name");
+
+        //System.out.println(jpaBookDao.getBookByName("The Girl with the Dragon Tattoo"));
+
+
     }
 
 

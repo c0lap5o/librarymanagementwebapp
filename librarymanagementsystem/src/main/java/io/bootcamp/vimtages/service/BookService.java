@@ -15,4 +15,6 @@ public interface BookService {
     List<Book> getByAuthor(String author);
 
     List<Book> getByIsbn(Long isbn);
+
+    Book saveOrUpdate(Book book);
 }
