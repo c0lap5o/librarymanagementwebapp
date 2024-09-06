@@ -40,7 +40,7 @@ public class Book extends AbstractModel {
         return ISBN;
     }
 
-    public void setISBN(Integer ISBN) {
+    public void setISBN(long ISBN) {
         this.ISBN = ISBN;
     }
 

@@ -8,12 +8,11 @@ console.log("document loaded");
     editButton.addEventListener('click', async function(){
         let id = document.querySelector('#editId').innerHTML;
         let book = {
-        id: parseInt(document.querySelector('#editId').innerHTML),    
         title: document.querySelector('#editTitle').value,
         author: document.querySelector('#editAuthor').value,
-        isbn: document.querySelector('#editIsbn').value,
+        isbn: parseFloat(document.querySelector('#editIsbn').value),
         publishedDate: convertDateFormat(document.querySelector('#editPublishedDate').value),
-        price: parseFloat(document.querySelector('#editPrice').value)
+        price: parseFloat(document.querySelector('#editPrice').value).toFixed(2)
         
     }
     
@@ -28,7 +27,7 @@ console.log("document loaded");
             window.alert("It wasn't possible to edit the book");
         }
 
-    updateRow(parseFloat(id), book);
+    updateRow(parseInt(id), book);
     
 });
 
@@ -119,11 +118,11 @@ function updateRow(id,updatedBook){
     let row = document.querySelector(`tr[data-book-id="${id}"]`);
     if (row) {
         row.innerHTML = `
-            <td>${updatedBook.id}</td>
+            <td>${id}</td>
             <td>${updatedBook.title}</td>
             <td>${updatedBook.author}</td>
             <td>${new Date(updatedBook.publishedDate).toLocaleDateString()}</td>
-            <td>${updatedBook.price}</td>
+            <td>${parseFloat(updatedBook.price)}</td>
             <td>${updatedBook.isbn}</td>
             <td>
                 <button onclick="fillEditBookForm(${updatedBook.id})">Edit</button>

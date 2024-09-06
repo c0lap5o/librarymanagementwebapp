@@ -20,4 +20,14 @@ public class MainController {
     public String homeJs() {
         return "/js/test.js";
     }
+
+    @RequestMapping("/addbook")
+    public String addBook(){
+        return "/addbook";
+    }
+
+    @RequestMapping("/js/addbook.js")
+    public String addBookJs() {
+        return "/js/addbook.js";
+    }
 }
