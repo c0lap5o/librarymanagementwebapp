@@ -16,9 +16,9 @@ public class MainController {
         return "/index.html";
     }
 
-    @RequestMapping("/js/test.js")
+    @RequestMapping("/js/index.js")
     public String homeJs() {
-        return "/js/test.js";
+        return "/js/index.js";
     }
 
     @RequestMapping("/addbook")
