@@ -3,26 +3,33 @@ var bookData = {};
 $(document).ready(function() {
 console.log("document loaded");
     $("#test")[0].innerHTML = "i changed this with js";
-    
     let editButton = document.querySelector('#edit');
+
     editButton.addEventListener('click', async function(){
-    let book = {
-        id: document.querySelector('#editId').innerHTML,
+        let id = document.querySelector('#editId').innerHTML;
+        let book = {
+        id: parseInt(document.querySelector('#editId').innerHTML),    
         title: document.querySelector('#editTitle').value,
         author: document.querySelector('#editAuthor').value,
-        publishedDate: document.querySelector('#editPublishedDate').value,
-        price: document.querySelector('#editPrice').value,
-        isbn: document.querySelector('#editIsbn').value
+        isbn: document.querySelector('#editIsbn').value,
+        publishedDate: convertDateFormat(document.querySelector('#editPublishedDate').value),
+        price: parseFloat(document.querySelector('#editPrice').value)
+        
     }
     
+    try{
+        fetch(apiUrl+id,{
+            method: "PUT",
+            headers: {
+                "Content-Type" : "application/json"
+            },body: JSON.stringify(book)
+        })
+        }catch{
+            window.alert("It wasn't possible to edit the book");
+        }
 
-    fetch(apiUrl+book.id,{
-        method: "PUT",
-        headers: {
-            "Content-Type" : "application/json"
-        },body: JSON.stringify(book)
-    })
-
+    updateRow(parseFloat(id), book);
+    
 });
 
     
@@ -40,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 function loadDataToTable(bookData){
     const tableBody = document.querySelector('#tableBody');
    bookData.forEach(book => {
-    let row = `<tr>
+    let row = `<tr data-book-id="${book.id}">
     <td>${book.id}</td>
     <td>${book.title}</td>
     <td>${book.author}</td>
@@ -49,7 +56,7 @@ function loadDataToTable(bookData){
     <td>${book.isbn}</td>
     <td>
     <button onclick="fillEditBookForm(${book.id})">Edit</button>
-    <button onclick="">Delete</button>
+    <button onclick="deleteBook(${book.id})">Delete</button>
     </td>
     </tr>`;
     tableBody.innerHTML += row;
@@ -97,7 +104,53 @@ function fillEditBookForm(id){
     isbnForm.value=book.isbn;    
 }
 
+function convertDateFormat(dateString) {
+    const parts = dateString.split('/');
+    
+    // Pad month and day with leading zeros if necessary
+    const month = parts[0].padStart(2, '0');
+    const day = parts[1].padStart(2, '0');
+    const year = parts[2];
+    
+    return `${year}-${month}-${day}`;
+}
 
+function updateRow(id,updatedBook){
+    let row = document.querySelector(`tr[data-book-id="${id}"]`);
+    if (row) {
+        row.innerHTML = `
+            <td>${updatedBook.id}</td>
+            <td>${updatedBook.title}</td>
+            <td>${updatedBook.author}</td>
+            <td>${new Date(updatedBook.publishedDate).toLocaleDateString()}</td>
+            <td>${updatedBook.price}</td>
+            <td>${updatedBook.isbn}</td>
+            <td>
+                <button onclick="fillEditBookForm(${updatedBook.id})">Edit</button>
+                <button onclick="deleteBook(${updatedBook.id})">Delete</button>
+            </td>
+        `;
+    }
+
+
+
+}
+
+async function deleteBook(id){
+    try{
+        fetch(apiUrl+id,{
+            method: "DELETE",
+        })
+        }catch{
+            window.alert("It wasn't possible to delete the book");
+        }
+    
+        let row = document.querySelector(`tr[data-book-id="${id}"]`);
+        if (row) {
+            row.innerHTML = ``;
+        }  
+
+}
 
 
 
