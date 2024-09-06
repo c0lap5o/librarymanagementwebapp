@@ -1,33 +1,94 @@
 const apiUrl = 'http://localhost:8080/lms/api/books/';
 var bookData = {};
 $(document).ready(function() {
-console.log("document loaded");
-    $("#test")[0].innerHTML = "i changed this with js";
-    let editButton = document.querySelector('#edit');
+    document.querySelector("#searchBar").addEventListener('keyup', function(){
+        let searchCriteria = document.querySelector('#dropDownOptions').value;
+        //console.log(searchCriteria);
+        //console.log(document.querySelector("#searchBar").value);
+        
+        switch(searchCriteria){
+            case 'id':
+                var query =document.querySelector("#searchBar").value;
+                var result = bookData.filter(book =>
+                
+                    book.id === parseInt(query)
+                );
+                loadDataToTable(result);
+                break;
+            case 'title':
+               
+                var query = document.querySelector("#searchBar").value;
+                var result = bookData.filter(book => 
+                    book.title.toLowerCase().includes(query.toLowerCase())
+                )
+                loadDataToTable(result);
+                break;
+            case 'author':
+                var query = document.querySelector("#searchBar").value;
+                var result = bookData.filter(book => 
+                    book.author.toLowerCase().includes(query.toLowerCase())
+                )
+                loadDataToTable(result);
+                break;  
+            case 'isbn':
+                var query = parseFloat(document.querySelector("#searchBar").value);
+                var result = bookData.filter(book => 
+                    book.isbn === query
+                )
+                loadDataToTable(result);
+                break;  
+            case 'price':
+                var query = parseFloat(document.querySelector("#searchBar").value);
+               
+                var result = bookData.filter(book => 
+                    
+                    book.price === query
+                )
+                loadDataToTable(result);
+                break;  
+            case 'publishedDate':
+                var query = document.querySelector("#searchBar").value;
+               
+                var result = bookData.filter(book => 
+                    
+                    new Date(book.publishedDate).toLocaleDateString() === query
+                )
+                
+                loadDataToTable(result);
+                break;    
 
+               
+        }
+    });
+    
+    
+    let editButton = document.querySelector('#edit');
+    
     editButton.addEventListener('click', async function(){
-        let id = document.querySelector('#editId').innerHTML;
-        let book = {
-        title: document.querySelector('#editTitle').value,
+    let id = document.querySelector('#editId').innerHTML;
+    let book = {
+    title: document.querySelector('#editTitle').value,
         author: document.querySelector('#editAuthor').value,
         isbn: parseFloat(document.querySelector('#editIsbn').value),
         publishedDate: convertDateFormat(document.querySelector('#editPublishedDate').value),
         price: parseFloat(document.querySelector('#editPrice').value).toFixed(2)
         
     }
-    
     try{
-        fetch(apiUrl+id,{
+        await fetch(apiUrl+id,{
             method: "PUT",
             headers: {
                 "Content-Type" : "application/json"
             },body: JSON.stringify(book)
         })
+        updateRow(parseInt(id), book);
         }catch{
             window.alert("It wasn't possible to edit the book");
         }
 
-    updateRow(parseInt(id), book);
+    
+
+   
     
 });
 
@@ -45,13 +106,14 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 function loadDataToTable(bookData){
     const tableBody = document.querySelector('#tableBody');
+    tableBody.innerHTML = "";
    bookData.forEach(book => {
     let row = `<tr data-book-id="${book.id}">
     <td>${book.id}</td>
     <td>${book.title}</td>
     <td>${book.author}</td>
     <td>${new Date(book.publishedDate).toLocaleDateString()}</td>
-    <td>${book.price}</td>
+    <td>${book.price.toFixed(2)}</td>
     <td>${book.isbn}</td>
     <td>
     <button onclick="fillEditBookForm(${book.id})">Edit</button>
@@ -81,6 +143,7 @@ async function getData(){
     return data;
 }
 
+//USE FORM METHOD USED IN ADD CLIENT REFACTOR
 function fillEditBookForm(id){
 
     let book = bookData.find(book => book.id === id);

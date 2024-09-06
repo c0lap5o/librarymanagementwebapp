@@ -12,7 +12,15 @@
 
 <p>My first paragraph.</p>
 <div>
-<input id = "searchBar" type="text" class="form-control" placeholder="Book" aria-label="Search" aria-describedby="basic-addon2">
+<input id = "searchBar" type="search" class="form-control" placeholder="Book" aria-label="Search" aria-describedby="basic-addon2">
+<select id="dropDownOptions" class="form-select-sm form-control">
+    <option value="author">Author</option>
+    <option value="id">Id</option>
+    <option value="title">title</option>
+    <option value="isbn">ISBN</option>
+    <option value="publishedDate">Published Date</option>
+    <option value="price">Price</option>
+</select>
 <button id="searchButton">Search</button>
 <a href="./addbook.html"> <button id="addbook">Add Book</button></a>
 </div>
@@ -25,7 +33,6 @@
     <input id = "editPrice" type="text" class="form-control" placeholder="Price" aria-label="price" aria-describedby="basic-addon2">
     <input id = "editIsbn" type="text" class="form-control" placeholder="ISBN" aria-label="isbn" aria-describedby="basic-addon2">
     <button id="edit">Edit</button>
-    
 </div>
 
 
