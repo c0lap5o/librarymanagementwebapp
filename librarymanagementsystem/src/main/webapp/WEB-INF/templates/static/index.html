@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<h1 id="test">My First Heading</h1>
+<h1 id="test">My Library</h1>
 
-<p>My first paragraph.</p>
+<p>Books for everyone</p>
 <div>
 <input id = "searchBar" type="search" class="form-control" placeholder="Book" aria-label="Search" aria-describedby="basic-addon2">
 <select id="dropDownOptions" class="form-select-sm form-control">
@@ -22,21 +22,43 @@
     <option value="price">Price</option>
 </select>
 <button id="searchButton">Search</button>
-<a href="./addbook.html"> <button id="addbook">Add Book</button></a>
+
 </div>
+    <form id="bookForm">
+        <div class="form-group">
+            <label for = "id" name="id">Id</label>
+            <p id = "id"></p>
+        </div>
+        
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input name="title" type="text" id="title" class="form-control" placeholder="Enter Title">
+        </div>
+      
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input name="author" type="text" id="author" class="form-control" placeholder="Enter Author">
+        </div>
+      
+        <div class="form-group">
+          <label for="publishedDate">Published Date</label>
+          <input name="publishedDate" type="text" id="publishedDate" class="form-control" placeholder="DD-MM-YYYY" data-date-format="dd-mm-yyyy">
+        </div>
 
-<div>
-    <p id = "editId">id</p>
-    <input id = "editTitle" type="text" class="form-control" placeholder="Title" aria-label="title" aria-describedby="basic-addon2">
-    <input id = "editAuthor" type="text" class="form-control" placeholder="Author" aria-label="author" aria-describedby="basic-addon2">
-    <input id = "editPublishedDate" type="text" class="form-control" placeholder="Published Date" aria-label="publishedDate" aria-describedby="basic-addon2">
-    <input id = "editPrice" type="text" class="form-control" placeholder="Price" aria-label="price" aria-describedby="basic-addon2">
-    <input id = "editIsbn" type="text" class="form-control" placeholder="ISBN" aria-label="isbn" aria-describedby="basic-addon2">
-    <button id="edit">Edit</button>
-</div>
-
-
-
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input name="price" type="number" step="0.01" id="price" class="form-control" placeholder="Enter Price">
+        </div>
+      
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input name="isbn" type="number" id="isbn" class="form-control" placeholder="Enter ISBN">
+        </div>
+        
+      </form>
+      <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+      <button id="addbook" type="submit" class="btn btn-primary">Add Book</button>
+      <button id="testbut" type="submit" class="btn btn-primary">test</button>
 
 
 <table class="table table-striped">
