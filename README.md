@@ -1,7 +1,7 @@
 # Library Management System
 
 This project is a simple web application for managing a library's book inventory. It allows users to add, view, update, and delete books from the inventory.
-The project is still in development, the frontend edit, save and delete features are not implemented as well as deploying the application with docker.
+The project is still in development, deploying the application with docker is still in progress.
 
 ## Technologies Used
 
@@ -75,4 +75,6 @@ Note: Ensure your docker-compose.yml file is correctly configured with:
 
 If you encounter issues, check the Docker logs and ensure all necessary files 
 (like WAR file, Dockerfile, etc.) are in the correct locations.
+
+Note: Since the docker deployment is not implmented, create a tomcat server and set the credentials for maven in a settings.xml in the .m2 dir. Then run the application with mvn tomcat7:deploy.
 
