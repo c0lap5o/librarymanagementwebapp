@@ -45,6 +45,10 @@ public class RestBookController {
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        if(book.getId() != null){
+            System.out.println(book.getId());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Book createdBook = bookService.saveOrUpdate(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
     }
@@ -69,8 +73,8 @@ public class RestBookController {
         }
 
         book.setId(id);
-        bookService.saveOrUpdate(book);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Book updatedBook = bookService.saveOrUpdate(book);
+        return new ResponseEntity<>(updatedBook,HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET,path = {"/name/{title}"})
     public ResponseEntity<List<Book>> getBookByName(@PathVariable String title){

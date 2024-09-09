@@ -21,6 +21,7 @@ public class Book extends AbstractModel {
     @NotBlank(message = "Author is mandatory")
     private String author;
     @NotNull
+    @Column(unique = true)
     private long ISBN;
     @NotNull
     @Temporal(TemporalType.DATE)
