@@ -3,8 +3,10 @@ package io.bootcamp.vimtages.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
-
 /**
  * Book Entity Class
  */
@@ -12,12 +14,19 @@ import java.util.Date;
 @Entity
 @Table(name = "books")
 public class Book extends AbstractModel {
-
+    @NotNull
+    @NotBlank(message = "Title is mandatory")
     private String title;
+    @NotNull
+    @NotBlank(message = "Author is mandatory")
     private String author;
+    @NotNull
+    @Column(unique = true)
     private long ISBN;
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date publishedDate;
+    @NotNull
     private double price;
 
     public String getTitle() {
@@ -41,6 +50,10 @@ public class Book extends AbstractModel {
     }
 
     public void setISBN(long ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public void setISBN(Integer ISBN) {
         this.ISBN = ISBN;
     }
 

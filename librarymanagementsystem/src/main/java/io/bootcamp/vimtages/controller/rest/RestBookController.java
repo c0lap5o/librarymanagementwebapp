@@ -1,18 +1,18 @@
 package io.bootcamp.vimtages.controller.rest;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.bootcamp.vimtages.model.Book;
-import io.bootcamp.vimtages.persistence.BookDao;
+
 import io.bootcamp.vimtages.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -33,7 +33,7 @@ public class RestBookController {
     }
     @RequestMapping(method = RequestMethod.GET,path = {"/{id}"})
     public ResponseEntity<Book> getBookById(@PathVariable Integer id){
-        if(id < 0){
+        if(id < 0 || bookService.get(id) == null){
          return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Book book = bookService.get(id);
@@ -41,29 +41,40 @@ public class RestBookController {
     }
 
     @RequestMapping(method = RequestMethod.POST,path = {""})
-    public ResponseEntity<Book> createBook(@RequestBody Book book){
+    public ResponseEntity<Book> createBook(@Valid @RequestBody Book book, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if(book.getId() != null){
+            System.out.println(book.getId());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Book createdBook = bookService.saveOrUpdate(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
     }
 
     @RequestMapping(method = RequestMethod.DELETE,path = "/{id}")
-    public void deleteBook(@PathVariable Integer id){
-        if (bookService.get(id) == null){
-            System.out.println("book does not exist");
-        }
-
-        bookService.delete(id);
-
-    }
-
-    @RequestMapping(method = RequestMethod.PUT,path = "/{id}")
-    public ResponseEntity<Book> updateBook(@RequestBody Book book, @PathVariable Integer id ){
+    public ResponseEntity<Book> deleteBook(@PathVariable Integer id){
         if (bookService.get(id) == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
+        bookService.delete(id);
+        return new ResponseEntity<Book>(HttpStatus.NO_CONTENT);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT,path = "/{id}")
+    public ResponseEntity<Book> updateBook(@Valid @RequestBody Book book, BindingResult bindingResult, @PathVariable Integer id ){
+        if (bookService.get(id) == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         book.setId(id);
-        bookService.saveOrUpdate(book);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Book updatedBook = bookService.saveOrUpdate(book);
+        return new ResponseEntity<>(updatedBook,HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET,path = {"/name/{title}"})
     public ResponseEntity<List<Book>> getBookByName(@PathVariable String title){

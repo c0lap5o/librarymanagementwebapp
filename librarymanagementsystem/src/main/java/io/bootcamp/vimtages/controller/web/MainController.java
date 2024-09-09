@@ -21,13 +21,10 @@ public class MainController {
         return "/js/index.js";
     }
 
-    @RequestMapping("/addbook")
-    public String addBook(){
-        return "/addbook";
+    @RequestMapping("/css/index.css")
+    public String indexCss() {
+        return "/css/index.css";
     }
 
-    @RequestMapping("/js/addbook.js")
-    public String addBookJs() {
-        return "/js/addbook.js";
-    }
+
 }
