@@ -42,10 +42,20 @@ Books have the following attributes:
 
 3. Build and start the containers in detached mode using ./start.sh:
   ```bash
-   $ sudo chmod +x ./start.sh 
+   $ cd docker 
   ```
-   This command does the following:
-   
+
+  ```bash
+   $ sudo chmod +x start.sh stop.sh clean.sh 
+  ```
+
+```bash
+   $ ./start.sh 
+  ```
+
+   This commands do the following:
+   - Change to the docker dir
+   - Add execution permission to start,stop and clean bash scripts
    - Changes the RESTApi URL in the index.js file according to env variables in .env file
    - Builds the project .war app with the command $ mvn clean package -Dapp.name=${APP_NAME}
    - Copies the app from the target dir to myapps dir
@@ -65,7 +75,10 @@ Books have the following attributes:
 ```bash
    $ docker-compose logs -f
 ```
-   This shows the logs from all services. Use Ctrl+C to exit.
+```bash
+   $ docker-compose logs <container_name> -f
+```
+   This shows the logs from all services or specific container. Use Ctrl+C to exit.
 
 9. Access your application:
    Open a web browser and go to http://localhost:8081
