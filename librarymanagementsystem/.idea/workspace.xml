@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8fb1dbb-3843-4d7e-beb8-5203cf31f41b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../docker/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker/Library Management System.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/rest/RestBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/rest/RestBookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/web/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/controller/web/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/bootcamp/vimtages/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/addbook.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/js/addbook.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/librarymanager.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/librarymanager.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/static/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +46,7 @@
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;formsubmission&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dockerdeploy&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/pedrocolaco/Documents/NightofOzManager/OzNightManager&quot;
   }

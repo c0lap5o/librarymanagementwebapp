@@ -1,0 +1,13 @@
+FROM tomcat:9-jdk11-openjdk-slim
+
+# Set Tomcat to use environment variables in configuration files
+ENV CATALINA_OPTS="-Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.Digester$EnvironmentPropertySource"
+ENV PORT_HTTP="8080"
+# Remove default Tomcat applications except manager and host-manager
+RUN rm -rf /usr/local/tomcat/webapps/* && \
+    mv /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager && \
+    mv /usr/local/tomcat/webapps.dist/host-manager /usr/local/tomcat/webapps/host-manager
+
+EXPOSE ${PORT_HTTP}
+
+CMD ["catalina.sh", "run"]

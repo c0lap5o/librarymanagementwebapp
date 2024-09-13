@@ -1,16 +1,50 @@
-version: '3'
 services:
   tomcat:
-    image: tomcat:jre17-temurin-noble
+    container_name: lms
+    build:
+      context: .
+      dockerfile: Dockerfile-tomcat
     ports:
-      - "8081:8080"
-    depends_on:
-      - db
-  db:
-    image: mysql:8
+      - ${HOST_APP_PORT}:${HTTP_PORT}
     environment:
-      MYSQL_ROOT_PASSWORD: 
-      MYSQL_DATABASE: mylibrary
+      APP_NAME: ${APP_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${USER_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      SCHEMA_AUTO: ${SCHEMA}
+      DEBUG: ${DEBUG}
+      PORT_HTTP: ${HTTP_PORT}
+      CATALINA_OPTS: -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.Digester${ENV_PROPERTY_SOURCE} 
+    volumes:
+      - ./myapps/${APP_NAME}.war:/usr/local/tomcat/webapps/${APP_NAME}.war
+      - ./config/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml
+      - ./config/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+    depends_on:
+      - mariadb
+  mariadb:
+    image: mariadb:latest
+    container_name: ${DB_HOST}
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: UTC/UTC
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${USER_PASSWORD}
+    volumes:
+      - ./mariadb-config:/config
+      - ./mariadb_data:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - ${HOST_DB_PORT}:${DB_PORT}
+    restart: unless-stopped
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - ${HOST_ADMINER_PORT}:${HTTP_PORT}
+volumes:
+  mariadb_data:
 
