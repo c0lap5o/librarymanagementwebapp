@@ -7,13 +7,13 @@ This project is a simple web application for managing a library's book inventory
 - Frontend: HTML, CSS, JavaScript
 - Backend: Java, Spring, Hibernate
 - Database: MySQL
-- Deploy: Docker
+- Run: Docker
 
 ## Features
 
 - RESTful API for CRUD operations on books
 - Web interface for managing books
-- Docker deployment
+- Run with Docker
 
 ## API Endpoints
 
@@ -34,7 +34,7 @@ Books have the following attributes:
 - Published date
 - Price
   
-## Deploy
+## Run
 
 1. Ensure Docker and Docker Compose are installed on your system.
 
