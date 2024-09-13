@@ -35,3 +35,27 @@ form, .btn {
 .table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+/* Center align all table cells */
+table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Style for the cell containing the buttons */
+.action-cell {
+    padding: 5px;
+}
+
+/* Button container styles */
+.button-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* Button styles */
+.button-container .btn {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}

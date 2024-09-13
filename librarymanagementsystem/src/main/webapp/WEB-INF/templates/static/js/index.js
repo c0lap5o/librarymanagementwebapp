@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8080/lms/api/books/';
+const apiUrl = 'http://localhost:8081/lms/api/books/';
 var bookData = [];
 
 // Bootstrap event listeners
@@ -8,12 +8,18 @@ document.addEventListener("DOMContentLoaded", async function() {
     submitButtonHandler();
     searchHandler();
     addBookHandler();
+    clearFormHandler();
 });
 
+
 function loadDataToTable(bookData) {
+    
     const tableBody = document.querySelector('#tableBody');
     tableBody.innerHTML = "";
+    
+    // Creates a table row for each book in the list
     bookData.forEach(book => {
+        
         let row = `
             <tr data-book-id="${book.id}">
                 <td name="id">${book.id}</td>
@@ -23,39 +29,54 @@ function loadDataToTable(bookData) {
                 <td>${book.price.toFixed(2)}</td>
                 <td>${book.isbn}</td>
                 <td>
-                    <button onclick="loadBookData(${book.id})">Edit</button>
-                    <button onclick="deleteBook(${book.id})">Delete</button>
+                    <div class="button-container">
+                        <button class="btn btn-success w-100" onclick="loadBookData(${book.id})">Edit</button>
+                        <button class="btn btn-danger w-100" onclick="deleteBook(${book.id})">Delete</button>
+                    </div>        
                 </td>
             </tr>`;
-        tableBody.innerHTML += row;
+        
+            tableBody.innerHTML += row;
     });
 }
-
+//Fetches the data from the server
 async function getData() {
+    
     try {
         const response = await fetch(apiUrl);
+    
         if (!response.ok) {
             throw new Error('Failed to fetch data from server.');
         }
+
         return await response.json();
+    
     } catch (error) {
+        
         console.log(error.message);
         window.alert('Something went wrong, please reload the page and try again.');
         return [];  // Return an empty array in case of failure
+    
     }
 }
 
 function convertDateFormat(dateString) {
+    //stops if string is null
     if (!dateString) return;
+    
     const parts = dateString.split('/');
     const month = parts[0].padStart(2, '0');
     const day = parts[1].padStart(2, '0');
     const year = parts[2];
+    
     return `${year}-${month}-${day}`;
 }
 
+//updates row with new book data
 function updateRow(updatedBook) {
+
     let row = document.querySelector(`tr[data-book-id="${updatedBook.id}"]`);
+    
     if (row) {
         row.innerHTML = `
             <td>${updatedBook.id}</td>
@@ -65,12 +86,13 @@ function updateRow(updatedBook) {
             <td>${parseFloat(updatedBook.price).toFixed(2)}</td>
             <td>${updatedBook.isbn}</td>
             <td>
-                <button onclick="loadBookData(${updatedBook.id})">Edit</button>
-                <button onclick="deleteBook(${updatedBook.id})">Delete</button>
+                <button class="btn btn-success w-100" onclick="loadBookData(${updatedBook.id})">Edit</button>
+                <button class="btn btn-danger w-100" onclick="deleteBook(${updatedBook.id})">Delete</button>
             </td>
         `;
     }
 }
+
 
 function loadBookData(id) {
     const book = bookData.find(book => book.id === id);
@@ -261,7 +283,14 @@ function getFormData() {
 
 }
 
+function clearFormHandler(){
+    document.querySelector('#clearFormButton').addEventListener('click',function(){
+        clearForm();
+    });
+    
+}
 
+//Tests to book data
 function isTitleValid() {
     const title = document.querySelector('#title').value;
     if (!title.trim()) {
