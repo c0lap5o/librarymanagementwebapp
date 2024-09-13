@@ -7,7 +7,7 @@ This project is a simple web application for managing a library's book inventory
 - Frontend: HTML, CSS, JavaScript
 - Backend: Java, Spring, Hibernate
 - Database: MySQL
-- Deployment: Docker
+- Deploy: Docker
 
 ## Features
 
@@ -87,6 +87,10 @@ Note: Ensure your docker-compose.yml file is correctly configured with:
 
 If you encounter issues, check the Docker logs and ensure all necessary files 
 (like WAR file, Dockerfile, etc.) are in the correct locations and the .env variables are well set.
+
+## Bugs
+  1. DB not available when the containers start
+    Description: When you try to access your web app you get a connection refused from the db
 
 ## License
 
